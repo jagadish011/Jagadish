@@ -3,24 +3,22 @@ import Profile from '../assets/file.png';
 
 const PortfolioLayout = () => {
   return (
-    <div className="max-w-3xl mx-auto p-4 sm:p-6 lg:p-8 font-sans text-gray-900">
+    <div className="max-w-3xl mx-auto p-4 sm:p-6 lg:p-8 font-spaceMono text-gray-900">
       {/* Header Section */}
       <header className="mb-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
           <div>
-            <h1 className="text-4xl font-bold mb-2">Jagadish S Munavalli</h1>
-            <p className="text-xl text-gray-600 mb-1">Full Stack Engineer focused on building products</p>
-            <p className="text-lg text-gray-500">with extra attention to details</p>
-            <p className="text-lg text-gray-500">Wrocław, Poland, CET</p>
+            <h1 className="text-4xl font-bold mb-3">Jagadish S Munavalli</h1>
+            <p className="text-xl text-gray-600 mb-1">Full Stack Engineer focused on building products with extra attention to details</p>
+            <p className="text-lg text-gray-500">India, Karnataka</p>
           </div>
-          <div className="mt-4 sm:mt-0">
-            <div className="w-40 h-40 rounded-lg overflow-hidden bg-gray-100">
+          <div className="mt-3 sm:mt-0">
+            <div className="w-40 h-40 rounded-lg overflow-hidden bg-gray-200">
               <img src={Profile} alt="Bartosz Jarocki" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
         <div className="flex mt-6 space-x-4">
-          {/* Add icons for contact methods */}
           <span className="text-2xl text-gray-400">✉️</span>
           <span className="text-2xl text-gray-400">📞</span>
           <span className="text-2xl text-gray-400">👍</span>
@@ -52,7 +50,6 @@ const PortfolioLayout = () => {
               Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL
             </p>
           </div>
-          {/* Add more work experiences here */}
         </div>
       </section>
 
@@ -99,7 +96,6 @@ const PortfolioLayout = () => {
                 <span className="bg-gray-100 rounded-full px-2 py-1 text-xs font-medium text-gray-700">
                   Side Project
                 </span>
-                {/* Add more technology tags here */}
               </div>
             </div>
           ))}
