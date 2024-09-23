@@ -20,6 +20,21 @@ const PortfolioLayout = () => {
     };
 
     checkIfMobile();
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      });
+    });
   }, []);
 
   const phoneNumber = "9141078914";
@@ -28,6 +43,18 @@ const PortfolioLayout = () => {
   // Function to toggle dropdown menu
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  // Function to handle smooth scrolling
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+    toggleDropdown();
   };
 
   return (
@@ -47,35 +74,35 @@ const PortfolioLayout = () => {
             <a
               href="#about"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-              onClick={toggleDropdown}
+              onClick={(e) => handleSmoothScroll(e, "about")}
             >
               About
             </a>
             <a
               href="#experience"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-              onClick={toggleDropdown}
+              onClick={(e) => handleSmoothScroll(e, "experience")}
             >
               Experience
             </a>
             <a
               href="#education"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-              onClick={toggleDropdown}
+              onClick={(e) => handleSmoothScroll(e, "education")}
             >
               Education
             </a>
             <a
               href="#skills"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-              onClick={toggleDropdown}
+              onClick={(e) => handleSmoothScroll(e, "skills")}
             >
               Skills
             </a>
             <a
               href="#projects"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-              onClick={toggleDropdown}
+              onClick={(e) => handleSmoothScroll(e, "projects")}
             >
               Projects
             </a>
@@ -136,8 +163,8 @@ const PortfolioLayout = () => {
         </div>
       </header>
 
-  {/* About Section */}
-  <section className="mb-8">
+      {/* About Section */}
+      <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">About</h2>
         <p className="text-lg text-gray-700 leading-relaxed">
           Motivated front-end developer with expertise in HTML, CSS, and
@@ -153,11 +180,11 @@ const PortfolioLayout = () => {
         <h2 className="text-2xl font-semibold mb-4">Work Experience</h2>
         <div className="space-y-6">
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <h3 className="text-xl font-semibold">
+            <div className="flex-row md:flex justify-between items-center mb-2">
+              <h3 className="text-xl font-semibold mb-3 md:mb-0">
                 Orbit tech Cloud Solution
               </h3>
-              <span className="text-gray-500">JAN 2024 - present</span>
+              <span className="text-gray-500 ">JAN 2024 - present</span>
             </div>
             <p className="text-lg font-medium text-gray-700 mb-1">
               Full Stack Developer
@@ -166,12 +193,13 @@ const PortfolioLayout = () => {
             <p className="text-base text-gray-700 mt-2 leading-relaxed">
               Implemented new features, led squad, worked on improving the way
               developers ship the code, started migration from Emotion to
-              Tailwind CSS and more. Technologies: React, JavaScript, Node.js, Express.js, MongoDB
+              Tailwind CSS and more. Technologies: React, JavaScript, Node.js,
+              Express.js, MongoDB
             </p>
           </div>
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <h3 className="text-xl font-semibold">
+            <div className="flex-row md:flex justify-between items-center mb-2">
+              <h3 className="text-xl font-semibold mb-3 md:mb-0">
                 J-Spiders Institute, Bangalore
               </h3>
               <span className="text-gray-500">JUN 2023 - DEC 2023</span>
@@ -191,10 +219,10 @@ const PortfolioLayout = () => {
       </section>
 
       <section id="education" className="mb-8">
-      <h2 className="text-2xl font-semibold mb-4">Education</h2>
+        <h2 className="text-2xl font-semibold mb-4">Education</h2>
         <div>
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-xl font-semibold">
+          <div className="flex-row md:flex justify-between items-center mb-2">
+            <h3 className="text-xl font-semibold mb-3 md:mb-0">
               KLS Vishwanathrao Deshpande Institute Of Technology
             </h3>
             <span className="text-gray-500 ml-4 mb-7 w-32 border-red-600">
@@ -207,8 +235,8 @@ const PortfolioLayout = () => {
           </p>
         </div>
         <div className="mt-6">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-xl font-semibold">
+          <div className="flex-row md:flex justify-between items-center mb-2">
+            <h3 className="text-xl font-semibold mb-3 md:mb-0">
               KLE Prerana PU College, BVB Campus, Hubli
             </h3>
             <span className="text-gray-500 ml-4 w-32 border-red-600">
@@ -221,8 +249,8 @@ const PortfolioLayout = () => {
           </p>
         </div>
         <div className="mt-6">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-xl font-semibold">
+          <div className="flex-row md:flex justify-between items-center mb-2">
+            <h3 className="text-xl font-semibold mb-3 md:mb-0">
               Kendriya Vidyalaya Dharwad
             </h3>
             <span className="text-gray-500 ml-4 w-32 border-red-600">
@@ -235,7 +263,7 @@ const PortfolioLayout = () => {
       </section>
 
       <section id="skills" className="mb-8">
-      <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+        <h2 className="text-2xl font-semibold mb-4">Skills</h2>
         <div className="flex flex-wrap gap-2">
           {[
             "c/c++",
@@ -265,8 +293,7 @@ const PortfolioLayout = () => {
       </section>
 
       <section id="projects">
-        
-      <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+        <h2 className="text-2xl font-semibold mb-4">Projects</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
             {
