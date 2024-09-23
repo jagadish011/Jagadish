@@ -55,7 +55,7 @@ const PortfolioLayout = () => {
           <a
             href={isMobile ? `tel:${phoneNumber}` : whatsappLink}
             className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg"
-            target={isMobile ? "_self" : "_blank"} 
+            target={isMobile ? "_self" : "_blank"}
             rel="noopener noreferrer"
           >
             <MdOutlineLocalPhone />
@@ -67,7 +67,11 @@ const PortfolioLayout = () => {
           >
             <FaLinkedinIn />
           </a>
-          <a href="https://github.com/jagadish011" target="_blank" className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg">
+          <a
+            href="https://github.com/jagadish011"
+            target="_blank"
+            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg"
+          >
             <LuGithub />
           </a>
         </div>
@@ -92,17 +96,37 @@ const PortfolioLayout = () => {
         <div className="space-y-6">
           <div>
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-xl font-semibold">Parabol</h3>
-              <span className="text-gray-500">2021 - 2024</span>
+              <h3 className="text-xl font-semibold">
+                Orbit tech Cloud Solution
+              </h3>
+              <span className="text-gray-500">JAN 2024 - present</span>
             </div>
             <p className="text-lg font-medium text-gray-700 mb-1">
-              Senior Full Stack Developer
+              Full Stack Developer
             </p>
             <p className="text-base text-gray-500 italic">Remote</p>
             <p className="text-base text-gray-700 mt-2 leading-relaxed">
               Implemented new features, led squad, worked on improving the way
               developers ship the code, started migration from Emotion to
               Tailwind CSS and more. Technologies: React, TypeScript, GraphQL
+            </p>
+          </div>
+          <div>
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="text-xl font-semibold">
+                J-Spiders Institute, Bangalore
+              </h3>
+              <span className="text-gray-500">JUN 2023 - DEC 2023</span>
+            </div>
+            <p className="text-lg font-medium text-gray-700 mb-1">
+              MERN Stack Trainee
+            </p>
+            {/* <p className="text-base text-gray-500 italic">Remote</p> */}
+            <p className="text-base text-gray-700 mt-2 leading-relaxed">
+              Completed intensive training in MERN stack technologies. Developed
+              multiple projects showcasing proficiency in MongoDB, Express.js,
+              React.js, and Node.js. Gained hands-on experience with REST API
+              development and frontend-backend integration
             </p>
           </div>
         </div>
@@ -114,12 +138,43 @@ const PortfolioLayout = () => {
         <div>
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-xl font-semibold">
-              Wrocław University of Technology
+              KLS Vishwanathrao Deshpande Institute Of Technology
             </h3>
-            <span className="text-gray-500">2007 - 2010</span>
+            <span className="text-gray-500 ml-4 mb-7 w-32 border-red-600">
+              2019 - 2023
+            </span>
           </div>
+          <p className="text-lg font-medium text-gray-700 mb-1">CGPA: 7.76</p>
           <p className="text-base text-gray-700">
-            Bachelor's Degree in Control systems engineering and Robotics
+            Bachelor's Degree in Computer Science and Engineering
+          </p>
+        </div>
+        <div className="mt-6">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-xl font-semibold">
+            KLE Prerana PU College, BVB Campus, Hubli
+            </h3>
+            <span className="text-gray-500 ml-4 mb-7 w-32 border-red-600">
+            2017 - 2019
+            </span>
+          </div>
+          {/* <p className="text-lg font-medium text-gray-700 mb-1">CGPA: 7.76</p> */}
+          <p className="text-base text-gray-700">
+            Pre University College in Computer Science
+          </p>
+        </div>
+        <div className="mt-6">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-xl font-semibold">
+            Kendriya Vidyalaya Dharwad
+            </h3>
+            <span className="text-gray-500 ml-4 mb-7 w-32 border-red-600">
+              2016 - 2017
+            </span>
+          </div>
+          {/* <p className="text-lg font-medium text-gray-700 mb-1">CGPA: 7.76</p> */}
+          <p className="text-base text-gray-700">
+            High School (CBSC)
           </p>
         </div>
       </section>
@@ -129,13 +184,21 @@ const PortfolioLayout = () => {
         <h2 className="text-2xl font-semibold mb-4">Skills</h2>
         <div className="flex flex-wrap gap-2">
           {[
+            "c/c++",
+            "SQL",
+            "HTML",
+            "CSS",
             "JavaScript",
             "TypeScript",
-            "React/Next.js/Remix",
+            "React",
             "Node.js",
-            "GraphQL",
-            "Relay",
-            "WebRTC",
+            "Express.js",
+            "MongoDB",
+            "Tailwind CSS",
+            "Bootstrap",
+            "Material UI",
+            "Git",
+            "GitHub",
           ].map((skill) => (
             <span
               key={skill}
