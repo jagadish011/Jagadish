@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BsGrid3X2Gap } from "react-icons/bs";
 import Profile from "../assets/file.png";
 import { CiMail } from "react-icons/ci";
 import { MdOutlineLocalPhone } from "react-icons/md";
@@ -7,6 +8,7 @@ import { LuGithub } from "react-icons/lu";
 
 const PortfolioLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     // Check if the user is on a mobile device
@@ -22,10 +24,67 @@ const PortfolioLayout = () => {
 
   const phoneNumber = "9141078914";
   const whatsappLink = `https://wa.me/${phoneNumber}`;
+
+  // Function to toggle dropdown menu
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
     <div className="max-w-3xl mx-auto p-4 sm:p-6 lg:p-8 font-spaceMono text-gray-900">
+      {/* Dropdown Menu Button */}
+      <div className="relative mb-4">
+        <button
+          onClick={toggleDropdown}
+          className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg hover:shadow-md hover:shadow-blue-200 transition-shadow duration-300"
+        >
+          <BsGrid3X2Gap />
+        </button>
+
+        {/* Dropdown Menu */}
+        {dropdownOpen && (
+          <div className="absolute mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+            <a
+              href="#about"
+              className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+              onClick={toggleDropdown}
+            >
+              About
+            </a>
+            <a
+              href="#experience"
+              className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+              onClick={toggleDropdown}
+            >
+              Experience
+            </a>
+            <a
+              href="#education"
+              className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+              onClick={toggleDropdown}
+            >
+              Education
+            </a>
+            <a
+              href="#skills"
+              className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+              onClick={toggleDropdown}
+            >
+              Skills
+            </a>
+            <a
+              href="#projects"
+              className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+              onClick={toggleDropdown}
+            >
+              Projects
+            </a>
+          </div>
+        )}
+      </div>
+
       {/* Header Section */}
-      <header className="mb-8">
+      <header id="about" className="mb-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
           <div>
             <h1 className="text-4xl font-bold mb-3">Jagadish S Munavalli</h1>
@@ -77,8 +136,8 @@ const PortfolioLayout = () => {
         </div>
       </header>
 
-      {/* About Section */}
-      <section className="mb-8">
+  {/* About Section */}
+  <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">About</h2>
         <p className="text-lg text-gray-700 leading-relaxed">
           Motivated front-end developer with expertise in HTML, CSS, and
@@ -90,8 +149,7 @@ const PortfolioLayout = () => {
         </p>
       </section>
 
-      {/* Work Experience Section */}
-      <section className="mb-8">
+      <section id="experience" className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Work Experience</h2>
         <div className="space-y-6">
           <div>
@@ -132,9 +190,8 @@ const PortfolioLayout = () => {
         </div>
       </section>
 
-      {/* Education Section */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Education</h2>
+      <section id="education" className="mb-8">
+      <h2 className="text-2xl font-semibold mb-4">Education</h2>
         <div>
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-xl font-semibold">
@@ -177,9 +234,8 @@ const PortfolioLayout = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+      <section id="skills" className="mb-8">
+      <h2 className="text-2xl font-semibold mb-4">Skills</h2>
         <div className="flex flex-wrap gap-2">
           {[
             "c/c++",
@@ -208,9 +264,9 @@ const PortfolioLayout = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+      <section id="projects">
+        
+      <h2 className="text-2xl font-semibold mb-4">Projects</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
             {
