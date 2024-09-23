@@ -36,11 +36,11 @@ const PortfolioLayout = () => {
             <p className="text-lg text-gray-500">India, Karnataka</p>
           </div>
           <div className="mt-3 sm:mt-0">
-            <div className="w-40 h-40 rounded-lg overflow-hidden bg-gray-200">
+            <div className="w-40 h-40 rounded-lg overflow-hidden bg-gray-200 hover:shadow-lg hover:shadow-blue-100 transition-shadow duration-300">
               <img
                 src={Profile}
                 alt="profile"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
               />
             </div>
           </div>
@@ -48,13 +48,13 @@ const PortfolioLayout = () => {
         <div className="flex mt-6 space-x-4">
           <a
             href="mailto:munavallijagadish@gmail.com"
-            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg"
+            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg hover:shadow-md hover:shadow-blue-200 transition-shadow duration-300"
           >
             <CiMail />
           </a>
           <a
             href={isMobile ? `tel:${phoneNumber}` : whatsappLink}
-            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg"
+            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg hover:shadow-md hover:shadow-blue-200 transition-shadow duration-300"
             target={isMobile ? "_self" : "_blank"}
             rel="noopener noreferrer"
           >
@@ -63,14 +63,14 @@ const PortfolioLayout = () => {
           <a
             href="https://www.linkedin.com/in/jagadish-s-munavalli-278aba219/"
             target="_blank"
-            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg"
+            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg hover:shadow-md hover:shadow-blue-200 transition-shadow duration-300"
           >
             <FaLinkedinIn />
           </a>
           <a
             href="https://github.com/jagadish011"
             target="_blank"
-            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg"
+            className="text-2xl text-gray-400 border border-gray-400 p-2 rounded-lg hover:shadow-md hover:shadow-blue-200 transition-shadow duration-300"
           >
             <LuGithub />
           </a>
@@ -108,7 +108,7 @@ const PortfolioLayout = () => {
             <p className="text-base text-gray-700 mt-2 leading-relaxed">
               Implemented new features, led squad, worked on improving the way
               developers ship the code, started migration from Emotion to
-              Tailwind CSS and more. Technologies: React, TypeScript, GraphQL
+              Tailwind CSS and more. Technologies: React, JavaScript, Node.js, Express.js, MongoDB
             </p>
           </div>
           <div>
@@ -152,10 +152,10 @@ const PortfolioLayout = () => {
         <div className="mt-6">
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-xl font-semibold">
-            KLE Prerana PU College, BVB Campus, Hubli
+              KLE Prerana PU College, BVB Campus, Hubli
             </h3>
-            <span className="text-gray-500 ml-4 mb-7 w-32 border-red-600">
-            2017 - 2019
+            <span className="text-gray-500 ml-4 w-32 border-red-600">
+              2017 - 2019
             </span>
           </div>
           {/* <p className="text-lg font-medium text-gray-700 mb-1">CGPA: 7.76</p> */}
@@ -166,16 +166,14 @@ const PortfolioLayout = () => {
         <div className="mt-6">
           <div className="flex justify-between items-center mb-2">
             <h3 className="text-xl font-semibold">
-            Kendriya Vidyalaya Dharwad
+              Kendriya Vidyalaya Dharwad
             </h3>
-            <span className="text-gray-500 ml-4 mb-7 w-32 border-red-600">
+            <span className="text-gray-500 ml-4 w-32 border-red-600">
               2016 - 2017
             </span>
           </div>
           {/* <p className="text-lg font-medium text-gray-700 mb-1">CGPA: 7.76</p> */}
-          <p className="text-base text-gray-700">
-            High School (CBSC)
-          </p>
+          <p className="text-base text-gray-700">High School (CBSC)</p>
         </div>
       </section>
 
@@ -216,38 +214,45 @@ const PortfolioLayout = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
             {
-              name: "Consultly",
-              description: "A platform to build and grow your online business",
+              name: "Dhongadi Alkaline-Water",
+              description:
+                "A mobile app for ordering alkaline water, allowing users to place orders seamlessly.",
+              type: "Freelance",
             },
             {
-              name: "Monito",
+              name: "kalasindhu",
               description:
-                "Browser extension that records everything happening in a web application",
+                "A web application for a dance website, enabling users to explore and book dance events seamlessly",
+              type: "Freelance",
             },
             {
-              name: "Jarocki.me",
+              name: "Ed mentor",
               description:
-                "My personal website and blog. Built with Next.js and Notion API",
+                "Developed a Student and Mentor web application using ReactJS and Tailwind CSS",
+              type: "Office Project",
             },
             {
-              name: "Minimal",
+              name: "Neo-Deals/DePanda",
               description:
-                "Minimalist calendars, habit trackers and planners generator",
+                "Developed a E-commerse website.That sells a variety of products, Uses technology to make shopping convenient, allows Vendors to sell on the site",
+              type: "Office Project",
             },
             {
-              name: "Barepapers",
+              name: " SEHGAL Foundation / Digital library",
               description:
-                "Generates beautiful wallpapers using random shapes and gradients",
+                "Web application using React, enabling students to access digital audio, books, and videos based on their syllabus. Ensured seamless navigation and an intuitive user interface for enhanced user experience.",
+              type: "Office Project",
             },
             {
-              name: "Year progress",
+              name: "Sahay 24x7",
               description:
-                "Tracks current year progress and displays a countdown",
+                "Platform offering a variety of services at home. Customers use our platform to book services",
+              type: "Office Project",
             },
           ].map((project) => (
             <div
               key={project.name}
-              className="border border-gray-200 rounded-lg p-4"
+              className="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300"
             >
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 {project.name}
@@ -257,7 +262,7 @@ const PortfolioLayout = () => {
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="bg-gray-100 rounded-full px-2 py-1 text-xs font-medium text-gray-700">
-                  Side Project
+                  {project.type}
                 </span>
               </div>
             </div>
