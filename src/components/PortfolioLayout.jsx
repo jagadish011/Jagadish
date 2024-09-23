@@ -5,10 +5,12 @@ import { CiMail } from "react-icons/ci";
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { LuGithub } from "react-icons/lu";
+import { BsArrowUp } from "react-icons/bs";
 
 const PortfolioLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     // Check if the user is on a mobile device
@@ -35,6 +37,13 @@ const PortfolioLayout = () => {
         }
       });
     });
+
+    const handleScroll = () => {
+      setShowScrollTop(window.pageYOffset > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const phoneNumber = "9141078914";
@@ -55,6 +64,13 @@ const PortfolioLayout = () => {
       });
     }
     toggleDropdown();
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -352,6 +368,15 @@ const PortfolioLayout = () => {
           ))}
         </div>
       </section>
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-orange-500 transition-colors duration-300"
+          aria-label="Scroll to top"
+        >
+          <BsArrowUp size={24} />
+        </button>
+      )}
     </div>
   );
 };
