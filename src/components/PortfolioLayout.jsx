@@ -6,6 +6,7 @@ import { MdOutlineLocalPhone } from "react-icons/md";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { LuGithub } from "react-icons/lu";
 import { BsArrowUp } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const PortfolioLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -138,7 +139,7 @@ const PortfolioLayout = () => {
             <p className="text-lg text-gray-500">India, Karnataka</p>
           </div>
           <div className="mt-3 sm:mt-0">
-            <div className="w-40 h-40 rounded-lg overflow-hidden bg-gray-200 hover:shadow-lg hover:shadow-blue-100 transition-shadow duration-300">
+            <div className="w-40 h-40 rounded-lg overflow-hidden bg-gray-200 hover:shadow-lg hover:shadow-blue-200 transition-shadow duration-300">
               <img
                 src={Profile}
                 alt="profile"
@@ -317,6 +318,7 @@ const PortfolioLayout = () => {
               description:
                 "A mobile app for ordering alkaline water, allowing users to place orders seamlessly.",
               type: "Freelance",
+              link: "/alkalineWater",
             },
             {
               name: "kalasindhu",
@@ -349,22 +351,24 @@ const PortfolioLayout = () => {
               type: "Office Project",
             },
           ].map((project) => (
-            <div
-              key={project.name}
-              className="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300"
-            >
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {project.name}
-              </h3>
-              <p className="text-gray-700 text-base mb-3">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-gray-100 rounded-full px-2 py-1 text-xs font-medium text-gray-700">
-                  {project.type}
-                </span>
+            <Link to={project.link} key={project.name} className="flex">
+              <div
+                key={project.name}
+                className="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {project.name}
+                </h3>
+                <p className="text-gray-700 text-base mb-3">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-gray-100 rounded-full px-2 py-1 text-xs font-medium text-gray-700">
+                    {project.type}
+                  </span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
