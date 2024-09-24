@@ -241,7 +241,7 @@ const PortfolioLayout = () => {
             <h3 className="text-xl font-semibold mb-3 md:mb-0">
               KLS Vishwanathrao Deshpande Institute Of Technology
             </h3>
-            <span className="text-gray-500 ml-4 mb-7 w-32 border-red-600">
+            <span className="text-gray-500 md:ml-4 mb-7 w-32 border-red-600">
               2019 - 2023
             </span>
           </div>
@@ -255,7 +255,7 @@ const PortfolioLayout = () => {
             <h3 className="text-xl font-semibold mb-3 md:mb-0">
               KLE Prerana PU College, BVB Campus, Hubli
             </h3>
-            <span className="text-gray-500 ml-4 w-32 border-red-600">
+            <span className="text-gray-500 md:ml-4 w-32 border-red-600">
               2017 - 2019
             </span>
           </div>
@@ -269,7 +269,7 @@ const PortfolioLayout = () => {
             <h3 className="text-xl font-semibold mb-3 md:mb-0">
               Kendriya Vidyalaya Dharwad
             </h3>
-            <span className="text-gray-500 ml-4 w-32 border-red-600">
+            <span className="text-gray-500 md:ml-4 w-32 border-red-600">
               2016 - 2017
             </span>
           </div>
