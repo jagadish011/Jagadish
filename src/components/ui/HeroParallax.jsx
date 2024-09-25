@@ -1,8 +1,8 @@
 import React from "react";
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export const HeroParallax = ({ products }) => {
+export const HeroParallax = ({ products, projectTitle, projectDescription, technologies }) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
@@ -24,9 +24,9 @@ export const HeroParallax = ({ products }) => {
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[360vh] py-2 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
-      <Header />
+      <Header title={projectTitle} description={projectDescription} technologies={technologies} />
       <motion.div
         style={{
           rotateX,
@@ -55,15 +55,20 @@ export const HeroParallax = ({ products }) => {
   );
 };
 
-export const Header = () => {
+export const Header = ({ title, description, technologies }) => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
-        The Ultimate <br /> development studio
+    <div className="max-w-7xl relative mx-auto py-20 md:py-20 px-4 w-full left-0 top-0">
+      <h1 className="text-2xl md:text-4xl font-bold dark:text-white">
+        {title}
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        We build beautiful products with the latest technologies and frameworks. We are a team of passionate developers and designers that love to build amazing products.
+        {description}
       </p>
+      <ul className="list-disc pl-5 mt-4 text-base md:text-xl dark:text-neutral-200">
+        {technologies.map((tech, index) => (
+          <li key={index}>{tech}</li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -80,7 +85,7 @@ export const ProductCard = ({ product, translate }) => {
       key={product.title}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <Link href={product.link} className="block group-hover/product:shadow-2xl">
+      <Link to={product.link} className="block group-hover/product:shadow-2xl">
         <img
           src={product.thumbnail}
           alt={product.title}

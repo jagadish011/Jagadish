@@ -1,32 +1,103 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { HeroParallax } from './ui/HeroParallax';
-// import { HeroParallax } from './ui/HeroParallax';
-
+import React, { useEffect } from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { HeroParallax } from "./ui/HeroParallax"; // import { HeroParallax } from './ui/HeroParallax';
 
 const AlkalineWater = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // Example products to display in HeroParallax
   const products = [
-    { title: "Product 1", link: "/product-1", thumbnail: "https://cdn.pixabay.com/photo/2024/01/04/21/54/volcano-8488486_1280.jpg" },
-    { title: "Product 2", link: "/product-2", thumbnail: "https://cdn.pixabay.com/photo/2024/05/15/12/31/lake-8763490_1280.jpg" },
-    { title: "Product 3", link: "/product-3", thumbnail: "https://cdn.pixabay.com/photo/2022/02/13/13/10/mountain-7011121_1280.png" },
-    { title: "Product 4", link: "/product-4", thumbnail: "https://cdn.pixabay.com/photo/2023/07/19/12/40/trees-8136806_1280.png" },
-    { title: "Product 5", link: "/product-5", thumbnail: "https://cdn.pixabay.com/photo/2024/06/17/14/58/school-8835808_1280.jpg" },
-    { title: "Product 6", link: "/product-6", thumbnail: "https://cdn.pixabay.com/photo/2024/07/31/15/10/blue-8935074_1280.jpg" },
-    { title: "Product 1", link: "/product-7", thumbnail: "https://cdn.pixabay.com/photo/2024/01/04/21/54/volcano-8488486_1280.jpg" },
-    { title: "Product 2", link: "/product-8", thumbnail: "https://cdn.pixabay.com/photo/2024/05/15/12/31/lake-8763490_1280.jpg" },
-    { title: "Product 3", link: "/product-9", thumbnail: "https://cdn.pixabay.com/photo/2022/02/13/13/10/mountain-7011121_1280.png" },
-    { title: "Product 4", link: "/product-10", thumbnail: "https://cdn.pixabay.com/photo/2023/07/19/12/40/trees-8136806_1280.png" },
-    { title: "Product 5", link: "/product-11", thumbnail: "https://cdn.pixabay.com/photo/2024/06/17/14/58/school-8835808_1280.jpg" },
-    { title: "Product 6", link: "/product-12", thumbnail: "https://cdn.pixabay.com/photo/2024/07/31/15/10/blue-8935074_1280.jpg" },
-    { title: "Product 6", link: "/product-13", thumbnail: "https://cdn.pixabay.com/photo/2021/03/26/11/39/camera-6125683_1280.jpg" },
-    { title: "Product 6", link: "/product-14", thumbnail: "https://cdn.pixabay.com/photo/2023/10/26/22/50/guitar-8343666_1280.png" },
+    {
+      title: "Product 1",
+      link: "/product-1",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2024/01/04/21/54/volcano-8488486_1280.jpg",
+    },
+    {
+      title: "Product 2",
+      link: "/product-2",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2024/05/15/12/31/lake-8763490_1280.jpg",
+    },
+    {
+      title: "Product 3",
+      link: "/product-3",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2022/02/13/13/10/mountain-7011121_1280.png",
+    },
+    {
+      title: "Product 4",
+      link: "/product-4",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2023/07/19/12/40/trees-8136806_1280.png",
+    },
+    {
+      title: "Product 5",
+      link: "/product-5",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2024/06/17/14/58/school-8835808_1280.jpg",
+    },
+    {
+      title: "Product 6",
+      link: "/product-6",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2024/07/31/15/10/blue-8935074_1280.jpg",
+    },
+    {
+      title: "Product 7",
+      link: "/product-7",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2024/01/04/21/54/volcano-8488486_1280.jpg",
+    },
+    {
+      title: "Product 8",
+      link: "/product-8",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2024/05/15/12/31/lake-8763490_1280.jpg",
+    },
+    {
+      title: "Product 9",
+      link: "/product-9",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2022/02/13/13/10/mountain-7011121_1280.png",
+    },
+    {
+      title: "Product 10",
+      link: "/product-10",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2023/07/19/12/40/trees-8136806_1280.png",
+    },
+    {
+      title: "Product 11",
+      link: "/product-11",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2024/06/17/14/58/school-8835808_1280.jpg",
+    },
+    {
+      title: "Product 12",
+      link: "/product-12",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2024/07/31/15/10/blue-8935074_1280.jpg",
+    },
+    {
+      title: "Product 13",
+      link: "/product-13",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2021/03/26/11/39/camera-6125683_1280.jpg",
+    },
+    {
+      title: "Product 14",
+      link: "/product-14",
+      thumbnail:
+        "https://cdn.pixabay.com/photo/2023/10/26/22/50/guitar-8343666_1280.png",
+    },
   ];
 
   return (
     <div className="container mx-auto py-8 font-spaceMono">
-      <h1 className="text-3xl font-bold mb-4">Dhongadi Alkaline-Water</h1>
+      <h1 className="text-2xl font-bold mb-4">Freelance Project</h1>
       {/* <div className="flex flex-col md:flex-row gap-8">
         <div className="flex-1">
           <Carousel
@@ -80,7 +151,16 @@ const AlkalineWater = () => {
       </div> */}
 
       {/* Adding the HeroParallax component here */}
-      <HeroParallax products={products} />
+      <HeroParallax
+        products={products}
+        projectTitle="Dhongadi Alkaline-Water"
+        projectDescription="Dhongadi Alkaline-Water is a mobile app for ordering and delivering alkaline water to customers in bulk. Our team has developed the app using React Native, which allows users to place orders seamlessly. We've also created an admin app for mobile and a web application for the admin, where the admin can manage orders, deliveries, and download the order details of the customer. For payment, we have integrated it with Razorpay."
+        technologies={[
+          "Backend: Node.js, Express.js",
+          "Database: MongoDB",
+          "Payment Gateway: Razorpay",
+        ]}
+      />
     </div>
   );
 };
