@@ -89,33 +89,41 @@ export const HeroParallax = ({
 
 export const Header = ({ title, description, technologies, links }) => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-12 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-4xl font-bold dark:text-white">
-        {title}
-      </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        {description}
-      </p>
-      <ul className="list-disc pl-5 mt-4 text-base md:text-xl dark:text-neutral-200">
-        {technologies.map((tech, index) => (
-          <li key={index}>{tech}</li>
-        ))}
-      </ul>
-      <div className="flex flex-row space-x-4 mt-8">
-        {links.map((link, index) => (
-          <a
-            href={link.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={index}
-          >
-            <button className="text-base md:text-xl font-bold dark:text-white bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-              {link.title}
-            </button>
-          </a>
-        ))}
-      </div>
-    </div>
+    <div className="max-w-7xl mx-auto py-20 md:py-12 px-4 w-full">
+  {/* Title */}
+  <h1 className="text-2xl md:text-4xl font-bold dark:text-white text-left">
+    {title}
+  </h1>
+
+  {/* Description */}
+  <p className="w-full text-base md:text-xl mt-8 dark:text-neutral-200 text-left">
+    {description}
+  </p>
+
+  {/* Technologies List */}
+  <ul className="list-disc pl-5 mt-4 text-base md:text-xl dark:text-neutral-200 text-left">
+    {technologies.map((tech, index) => (
+      <li key={index}>{tech}</li>
+    ))}
+  </ul>
+
+  {/* Links */}
+  <div className="flex flex-row space-x-4 mt-8">
+    {links.map((link, index) => (
+      <a
+        href={link.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        key={index}
+      >
+        <button className="text-base md:text-xl font-bold dark:text-white bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+          {link.title}
+        </button>
+      </a>
+    ))}
+  </div>
+</div>
+
   );
 };
 
