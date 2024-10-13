@@ -1,6 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
+
+const Modal = ({ product, closeModal }) => {
+  const [modalStyle, setModalStyle] = useState({});
+
+  React.useEffect(() => {
+    const calculatePosition = () => {
+      const modalWidth = 800; // Adjust as needed
+      const modalHeight = 600; // Adjust as needed
+
+      // Get the current scroll position
+      const scrollY = window.scrollY || window.pageYOffset;
+
+      // Calculate the center of the current viewport
+      const viewportCenterY = scrollY + window.innerHeight / 2;
+      const viewportCenterX = window.innerWidth / 2;
+
+      // Position the modal centered in the current viewport
+      const top = viewportCenterY - modalHeight / 2;
+      const left = viewportCenterX - modalWidth / 2;
+
+      setModalStyle({
+        position: "absolute",
+        top: `${top}px`,
+        left: `${left}px`,
+        maxWidth: `${modalWidth}px`,
+        maxHeight: `${modalHeight}px`,
+        transform: "none",
+      });
+    };
+
+    calculatePosition();
+    window.addEventListener("resize", calculatePosition);
+    return () => window.removeEventListener("resize", calculatePosition);
+  }, []);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-black bg-opacity-75 overflow-y-auto"
+      onClick={closeModal}
+    >
+      <div
+        style={modalStyle}
+        className="bg-white p-4 relative mx-auto overflow-auto rounded-lg shadow-xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          className="absolute top-2 right-2 text-black font-bold text-lg"
+          onClick={closeModal}
+        >
+          &times;
+        </button>
+        <img
+          src={product.thumbnail}
+          alt={product.title}
+          className="object-contain w-full h-auto"
+        />
+        <h3 className="mt-4 text-xl font-semibold">{product.title}</h3>
+      </div>
+    </div>
+  );
+};
 
 export const HeroParallax = ({
   products,
@@ -28,22 +89,19 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 1], [0, -1000]),
     springConfig
   );
-  const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig
-  );
-  const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-    springConfig
-  );
-  const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig
-  );
-  const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-    springConfig
-  );
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleImageClick = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
 
   return (
     <div
@@ -62,6 +120,7 @@ export const HeroParallax = ({
             product={product}
             translate={translateX}
             key={product.title}
+            onImageClick={handleImageClick}
           />
         ))}
       </motion.div>
@@ -71,6 +130,7 @@ export const HeroParallax = ({
             product={product}
             translate={translateXReverse}
             key={product.title}
+            onImageClick={handleImageClick}
           />
         ))}
       </motion.div>
@@ -80,9 +140,14 @@ export const HeroParallax = ({
             product={product}
             translate={translateX}
             key={product.title}
+            onImageClick={handleImageClick}
           />
         ))}
       </motion.div>
+
+      {isModalOpen && (
+        <Modal product={selectedProduct} closeModal={closeModal} />
+      )}
     </div>
   );
 };
@@ -90,44 +155,36 @@ export const HeroParallax = ({
 export const Header = ({ title, description, technologies, links }) => {
   return (
     <div className="max-w-7xl mx-auto py-20 md:py-12 px-4 w-full">
-  {/* Title */}
-  <h1 className="text-2xl md:text-4xl font-bold dark:text-white text-left">
-    {title}
-  </h1>
-
-  {/* Description */}
-  <p className="w-full text-base md:text-xl mt-8 dark:text-neutral-200 text-left">
-    {description}
-  </p>
-
-  {/* Technologies List */}
-  <ul className="list-disc pl-5 mt-4 text-base md:text-xl dark:text-neutral-200 text-left">
-    {technologies.map((tech, index) => (
-      <li key={index}>{tech}</li>
-    ))}
-  </ul>
-
-  {/* Links */}
-  <div className="flex flex-row space-x-4 mt-8">
-    {links.map((link, index) => (
-      <a
-        href={link.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        key={index}
-      >
-        <button className="text-base md:text-xl font-bold dark:text-white bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-          {link.title}
-        </button>
-      </a>
-    ))}
-  </div>
-</div>
-
+      <h1 className="text-2xl md:text-4xl font-bold dark:text-white text-left">
+        {title}
+      </h1>
+      <p className="w-full text-base md:text-xl mt-8 dark:text-neutral-200 text-left">
+        {description}
+      </p>
+      <ul className="list-disc pl-5 mt-4 text-base md:text-xl dark:text-neutral-200 text-left">
+        {technologies.map((tech, index) => (
+          <li key={index}>{tech}</li>
+        ))}
+      </ul>
+      <div className="flex flex-row space-x-4 mt-8">
+        {links.map((link, index) => (
+          <a
+            href={link.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={index}
+          >
+            <button className="text-base md:text-xl font-bold dark:text-white bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+              {link.title}
+            </button>
+          </a>
+        ))}
+      </div>
+    </div>
   );
 };
 
-export const ProductCard = ({ product, translate }) => {
+export const ProductCard = ({ product, translate, onImageClick }) => {
   return (
     <motion.div
       style={{
@@ -139,17 +196,17 @@ export const ProductCard = ({ product, translate }) => {
       key={product.title}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <Link to={product.link} className="">
+      <button onClick={() => onImageClick(product)} className="w-full h-full">
         <img
           src={product.thumbnail}
           alt={product.title}
           className="object-contain object-center absolute h-full w-full inset-0"
         />
-      </Link>
-      <div className="absolute inset-0 h-full w-full  pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4  text-white">
-        {product.title}
-      </h2>
+      </button>
+      <div className="absolute inset-0 h-full w-full pointer-events-none"></div>
+      <h2 className="absolute bottom-4 left-4 text-white">{product.title}</h2>
     </motion.div>
   );
 };
+
+export default HeroParallax;
