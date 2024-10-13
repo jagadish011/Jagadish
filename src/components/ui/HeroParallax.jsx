@@ -2,7 +2,13 @@ import React from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export const HeroParallax = ({ products, projectTitle, projectDescription, technologies, links }) => {
+export const HeroParallax = ({
+  products,
+  projectTitle,
+  projectDescription,
+  technologies,
+  links,
+}) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
@@ -14,42 +20,68 @@ export const HeroParallax = ({ products, projectTitle, projectDescription, techn
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
-  const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
-  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]), springConfig);
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]), springConfig);
-  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.2, 1]), springConfig);
-  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]), springConfig);
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]), springConfig);
+  const translateX = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    springConfig
+  );
+  const translateXReverse = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    springConfig
+  );
+  const rotateX = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    springConfig
+  );
+  const opacity = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    springConfig
+  );
+  const rotateZ = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    springConfig
+  );
+  const translateY = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    springConfig
+  );
 
   return (
     <div
       ref={ref}
-      className="h-[365vh] py-2 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-full py-2 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
-      <Header title={projectTitle} description={projectDescription} technologies={technologies} links={links} />
-      <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-      >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row mb-20 space-x-20">
-          {secondRow.map((product) => (
-            <ProductCard product={product} translate={translateXReverse} key={product.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
+      <Header
+        title={projectTitle}
+        description={projectDescription}
+        technologies={technologies}
+        links={links}
+      />
+      <motion.div className="flex flex-row-reverse space-x-reverse space-x-6 mb-10">
+        {firstRow.map((product) => (
+          <ProductCard
+            product={product}
+            translate={translateX}
+            key={product.title}
+          />
+        ))}
+      </motion.div>
+      <motion.div className="flex flex-row mb-10 space-x-6">
+        {secondRow.map((product) => (
+          <ProductCard
+            product={product}
+            translate={translateXReverse}
+            key={product.title}
+          />
+        ))}
+      </motion.div>
+      <motion.div className="flex flex-row-reverse space-x-reverse space-x-6">
+        {thirdRow.map((product) => (
+          <ProductCard
+            product={product}
+            translate={translateX}
+            key={product.title}
+          />
+        ))}
       </motion.div>
     </div>
   );
@@ -70,11 +102,11 @@ export const Header = ({ title, description, technologies, links }) => {
         ))}
       </ul>
       <div className="flex flex-row space-x-4 mt-8">
-      {links.map((link, index) => (
+        {links.map((link, index) => (
           <a
             href={link.link}
-            target="_blank" 
-            rel="noopener noreferrer" 
+            target="_blank"
+            rel="noopener noreferrer"
             key={index}
           >
             <button className="text-base md:text-xl font-bold dark:text-white bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
@@ -99,18 +131,17 @@ export const ProductCard = ({ product, translate }) => {
       key={product.title}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <Link to={product.link} className="block group-hover/product:shadow-2xl">
+      <Link to={product.link} className="">
         <img
           src={product.thumbnail}
           alt={product.title}
           className="object-contain object-center absolute h-full w-full inset-0"
         />
       </Link>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+      <div className="absolute inset-0 h-full w-full  pointer-events-none"></div>
+      <h2 className="absolute bottom-4 left-4  text-white">
         {product.title}
       </h2>
     </motion.div>
   );
 };
-

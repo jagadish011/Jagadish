@@ -325,6 +325,7 @@ const PortfolioLayout = () => {
               description:
                 "A web application for a dance website, enabling users to explore and book dance events seamlessly",
               type: "Freelance",
+              link: "/kalasindu",
             },
             {
               name: "Ed mentor",
