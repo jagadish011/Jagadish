@@ -9,8 +9,7 @@ import a5 from "../assets/kalasindhu/k5.png";
 import a6 from "../assets/kalasindhu/k6.png";
 import a7 from "../assets/kalasindhu/k7.png";
 import a8 from "../assets/kalasindhu/k8.png";
-
-const Kalasindu = () => {
+const Edmentor = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -32,21 +31,22 @@ const Kalasindu = () => {
     { title: "Product 6", thumbnail: a6 },
   ];
 
-  const links = [{ title: "Learn More", link: "https://kalasindhu.com/" }];
+  const links = [{ title: "Learn More", link: "https://theedmentor.com/" }];
 
   return (
     <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8 font-spaceMono">
       {/* Adding the HeroParallax component here */}
       <HeroParallax
         products={products}
-        projectTitle="Kalasindu"
-        projectDescription="I had the incredible opportunity to develop a website for Kalasindhu, an esteemed Academy of Dance and Related Arts located in Banashankari, Bangalore, India. This project was built using React and Bootstrap to ensure a responsive and visually appealing design. Kalasindhu is passionately committed to preserving and promoting Indian arts and culture. The academy offers a comprehensive and integrated approach to education in classical arts, including dance, music, visual art, and Sanskrit, with a special focus on dance."
+        projectTitle="Edmentor"
+        projectDescription=" EdMentor is an online platform designed to connect individuals with experienced mentors, offering personalized guidance for educational and career growth. The platform emphasizes one-on-one mentorship and collaboration with industry partners to ensure job readiness.  
+        Provide a seamless mentoring experience with features like mentor matching, real-time communication, and a dynamic learning environment."
         technologies={[
-          "An elegant, user-friendly layout that showcases the rich tapestry of classical arts.",
-          "Detailed information on the various programs and courses offered by the academy.",
-          "A dedicated section for news and updates to keep students and visitors informed about upcoming events and performances.",
-          "A gallery to highlight memorable moments and achievements of the academy’s students and faculty.",
-          "Contact information and an interactive map for easy navigation and inquiries.",
+          "Developed the Signup and Landing Pages: Built fully responsive, user-friendly pages to facilitate an intuitive user experience.",
+          "API Integration: Integrated multiple APIs for fetching mentor and mentee data, implementing user authentication, and managing data flow between the frontend and backend.",
+          "Mentorship Dashboard: Worked on creating dynamic, personalized dashboards for both mentors and mentees to track progress, schedule meetings, and exchange resources.",
+          "Responsive Design: Ensured cross-device compatibility using modern CSS frameworks and best practices in design.",
+          "Worked closely with UI/UX designers to translate design wireframes into a functional and engaging user interface.",
         ]}
         links={links}
       />
@@ -54,4 +54,4 @@ const Kalasindu = () => {
   );
 };
 
-export default Kalasindu;
+export default Edmentor;

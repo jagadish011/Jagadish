@@ -7,6 +7,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { LuGithub } from "react-icons/lu";
 import { BsArrowUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { link } from "framer-motion/client";
 
 const PortfolioLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -332,6 +333,7 @@ const PortfolioLayout = () => {
               description:
                 "Developed a Student and Mentor web application using ReactJS and Tailwind CSS",
               type: "Office Project",
+              link:"/edmentor"
             },
             {
               name: "Neo-Deals/DePanda",
