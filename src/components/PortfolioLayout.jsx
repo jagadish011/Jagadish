@@ -7,7 +7,6 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { LuGithub } from "react-icons/lu";
 import { BsArrowUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { link } from "framer-motion/client";
 
 const PortfolioLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -333,12 +332,12 @@ const PortfolioLayout = () => {
               description:
                 "Developed a Student and Mentor web application using ReactJS and Tailwind CSS",
               type: "Office Project",
-              link:"/edmentor"
+              link: "/edmentor",
             },
             {
               name: "Neo-Deals/DePanda",
               description:
-                "Developed a E-commerse website.That sells a variety of products, Uses technology to make shopping convenient, allows Vendors to sell on the site",
+                "Developed a E-commerce website. That sells a variety of products, uses technology to make shopping convenient, allows Vendors to sell on the site.",
               type: "Office Project",
             },
             {
@@ -350,22 +349,21 @@ const PortfolioLayout = () => {
             {
               name: "Sahay 24x7",
               description:
-                "Platform offering a variety of services at home. Customers use our platform to book services",
+                "Platform offering a variety of services at home. Customers use our platform to book services.",
               type: "Office Project",
             },
           ].map((project) => (
-            <Link to={project.link} key={project.name} className="flex">
-              <div
-                key={project.name}
-                className="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {project.name}
-                </h3>
-                <p className="text-gray-700 text-base mb-3">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
+            <Link to={project.link || "#"} key={project.name} className="flex">
+              <div className="border border-gray-200 rounded-lg p-4 flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {project.name}
+                  </h3>
+                  <p className="text-gray-700 text-base mb-3">
+                    {project.description}
+                  </p>
+                </div>
+                <div className="mt-auto">
                   <span className="bg-gray-100 rounded-full px-2 py-1 text-xs font-medium text-gray-700">
                     {project.type}
                   </span>
@@ -375,6 +373,7 @@ const PortfolioLayout = () => {
           ))}
         </div>
       </section>
+
       {showScrollTop && (
         <button
           onClick={scrollToTop}

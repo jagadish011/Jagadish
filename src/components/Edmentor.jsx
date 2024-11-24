@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { HeroParallax } from "./ui/HeroParallax";
-import a1 from "../assets/kalasindhu/k1.png";
-import a2 from "../assets/kalasindhu/k2.png";
-import a3 from "../assets/kalasindhu/k3.png";
-import a4 from "../assets/kalasindhu/k4.png";
-import a5 from "../assets/kalasindhu/k5.png";
-import a6 from "../assets/kalasindhu/k6.png";
-import a7 from "../assets/kalasindhu/k7.png";
-import a8 from "../assets/kalasindhu/k8.png";
+import a1 from "../assets/EdMentor/ed1.png";
+import a2 from "../assets/EdMentor/ed2.png";
+import a3 from "../assets/EdMentor/ed3.png";
+import a4 from "../assets/EdMentor/ed4.png";
+import a5 from "../assets/EdMentor/ed5.png";
+import a6 from "../assets/EdMentor/ed6.png";
+import a7 from "../assets/EdMentor/ed7.png";
+import a8 from "../assets/EdMentor/ed3.png";
 const Edmentor = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
