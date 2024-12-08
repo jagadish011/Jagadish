@@ -57,7 +57,7 @@ export const HeroParallax = ({
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 text-transparent bg-clip-text">
           {projectTitle}
         </h1>
-        <p className="text-lg sm:text-xl mb-6 leading-relaxed bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 text-transparent bg-clip-text">
+        <p className="text-lg sm:text-xl mb-6 leading-relaxed bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 text-transparent bg-clip-text text-left">
           {projectDescription}
         </p>
         <ul className="list-none flex flex-wrap justify-center space-x-4 mb-8">
