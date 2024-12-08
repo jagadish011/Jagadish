@@ -79,8 +79,8 @@ const AlkalineWater = () => {
     { title: "Learn More", link: "https://alkaline-admin.vercel.app/" },
   ];
   return (
-    <div className="container mx-auto py-8 font-spaceMono">
-      <h1 className="text-2xl font-bold mb-4">Freelance Project</h1>
+    <div className="container mx-auto font-spaceMono">
+      {/* <h1 className="text-2xl font-bold mb-4">Freelance Project</h1> */}
       {/* Adding the HeroParallax component here */}
       <HeroParallax
         products={products}
