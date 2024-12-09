@@ -23,9 +23,9 @@ const Modal = ({ product, closeModal }) => {
           alt={product.title}
           className="object-cover w-full h-64 rounded-lg"
         />
-        <h3 className="mt-4 text-2xl font-semibold text-gray-800">
+        {/* <h3 className="mt-4 text-2xl font-semibold text-gray-800">
           {product.title}
-        </h3>
+        </h3> */}
       </div>
     </div>
   );
@@ -89,17 +89,16 @@ export const HeroParallax = ({
           <motion.div
             key={index}
             className="relative group"
-            whileHover={{ scale: 1.05 }}
+            // whileHover={{ scale: 1.05 }}
+            animate={{ y: [0, -10, 0] }} // Animation: Move up, then down
+            transition={{ repeat: Infinity, duration: 2 }}
           >
             <img
               src={product.thumbnail}
               alt={product.title}
-              className="object-cover w-full h-48 rounded-lg shadow-lg"
+              className="object-contain w-full h-auto rounded-lg shadow-lg"
               onClick={() => handleImageClick(product)}
             />
-            <h3 className="absolute bottom-4 left-4 text-white text-lg font-semibold bg-black bg-opacity-50 px-2 py-1 rounded">
-              {product.title}
-            </h3>
           </motion.div>
         ))}
       </main>
