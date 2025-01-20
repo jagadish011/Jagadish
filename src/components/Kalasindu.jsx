@@ -35,18 +35,25 @@ const Kalasindu = () => {
   const links = [{ title: "Learn More", link: "https://kalasindhu.com/" }];
 
   return (
-    <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8 font-spaceMono">
+    <div className="font-spaceMono">
       {/* Adding the HeroParallax component here */}
       <HeroParallax
         products={products}
         projectTitle="Kalasindu"
-        projectDescription="I had the incredible opportunity to develop a website for Kalasindhu, an esteemed Academy of Dance and Related Arts located in Banashankari, Bangalore, India. This project was built using React and Bootstrap to ensure a responsive and visually appealing design. Kalasindhu is passionately committed to preserving and promoting Indian arts and culture. The academy offers a comprehensive and integrated approach to education in classical arts, including dance, music, visual art, and Sanskrit, with a special focus on dance."
+        projectDescription="I had the incredible opportunity to develop a website for Kalasindhu, an esteemed Academy of Dance and Related Arts located in Banashankari, Bangalore, India. This project was built using React and Bootstrap to ensure a responsive and visually appealing design. Kalasindhu is passionately committed to preserving and promoting Indian arts and culture. The academy offers a comprehensive and integrated approach to education in classical arts, including dance, music, visual art, and Sanskrit, with a special focus on dance.
+        An elegant, user-friendly layout that showcases the rich tapestry of classical arts.
+        Detailed information on the various programs and courses offered by the academy.
+        A dedicated section for news and updates to keep students and visitors informed about upcoming events and performances.
+        A gallery to highlight memorable moments and achievements of the academy’s students and faculty.
+        Contact information and an interactive map for easy navigation and inquiries."
         technologies={[
-          "An elegant, user-friendly layout that showcases the rich tapestry of classical arts.",
-          "Detailed information on the various programs and courses offered by the academy.",
-          "A dedicated section for news and updates to keep students and visitors informed about upcoming events and performances.",
-          "A gallery to highlight memorable moments and achievements of the academy’s students and faculty.",
-          "Contact information and an interactive map for easy navigation and inquiries.",
+          "React.js",
+          "Bootstrap",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Git",
+          "GitHub",
         ]}
         links={links}
       />

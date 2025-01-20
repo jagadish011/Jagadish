@@ -1,53 +1,19 @@
 import React, { useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Modal = ({ product, closeModal }) => {
-  const [modalStyle, setModalStyle] = useState({});
-
-  React.useEffect(() => {
-    const calculatePosition = () => {
-      const modalWidth = 800; // Adjust as needed
-      const modalHeight = 600; // Adjust as needed
-
-      // Get the current scroll position
-      const scrollY = window.scrollY || window.pageYOffset;
-
-      // Calculate the center of the current viewport
-      const viewportCenterY = scrollY + window.innerHeight / 2;
-      const viewportCenterX = window.innerWidth / 2;
-
-      // Position the modal centered in the current viewport
-      const top = viewportCenterY - modalHeight / 2;
-      const left = viewportCenterX - modalWidth / 2;
-
-      setModalStyle({
-        position: "absolute",
-        top: `${top}px`,
-        left: `${left}px`,
-        maxWidth: `${modalWidth}px`,
-        maxHeight: `${modalHeight}px`,
-        transform: "none",
-      });
-    };
-
-    calculatePosition();
-    window.addEventListener("resize", calculatePosition);
-    return () => window.removeEventListener("resize", calculatePosition);
-  }, []);
-
   return (
     <div
-      className="fixed inset-0 z-50 bg-black bg-opacity-75 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center"
       onClick={closeModal}
     >
       <div
-        style={modalStyle}
-        className="bg-white p-4 relative mx-auto overflow-auto rounded-lg shadow-xl"
+        className="bg-white rounded-lg shadow-lg p-6 w-[90%] md:w-[50%] relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          className="absolute top-2 right-2 text-black font-bold text-lg"
+          className="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl font-bold"
           onClick={closeModal}
         >
           &times;
@@ -55,13 +21,16 @@ const Modal = ({ product, closeModal }) => {
         <img
           src={product.thumbnail}
           alt={product.title}
-          className="object-contain w-full h-auto"
+          className="object-contain w-full h-auto rounded-lg"
         />
-        <h3 className="mt-4 text-xl font-semibold">{product.title}</h3>
+        {/* <h3 className="mt-4 text-2xl font-semibold text-gray-800 text-center">
+          {product.title}
+        </h3> */}
       </div>
     </div>
   );
 };
+
 
 export const HeroParallax = ({
   products,
@@ -70,26 +39,6 @@ export const HeroParallax = ({
   technologies,
   links,
 }) => {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
-  const ref = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
-
-  const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig
-  );
-  const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig
-  );
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -104,114 +53,58 @@ export const HeroParallax = ({
   };
 
   return (
-    <div
-      ref={ref}
-      className="h-full py-2 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
-    >
-      <Header
-        title={projectTitle}
-        description={projectDescription}
-        technologies={technologies}
-        links={links}
-      />
-      <motion.div className="flex flex-row-reverse space-x-reverse space-x-6 mb-10">
-        {firstRow.map((product) => (
-          <ProductCard
-            product={product}
-            translate={translateX}
-            key={product.title}
-            onImageClick={handleImageClick}
-          />
-        ))}
-      </motion.div>
-      <motion.div className="flex flex-row mb-10 space-x-6">
-        {secondRow.map((product) => (
-          <ProductCard
-            product={product}
-            translate={translateXReverse}
-            key={product.title}
-            onImageClick={handleImageClick}
-          />
-        ))}
-      </motion.div>
-      <motion.div className="flex flex-row-reverse space-x-reverse space-x-6">
-        {thirdRow.map((product) => (
-          <ProductCard
-            product={product}
-            translate={translateX}
-            key={product.title}
-            onImageClick={handleImageClick}
-          />
-        ))}
-      </motion.div>
-
-      {isModalOpen && (
-        <Modal product={selectedProduct} closeModal={closeModal} />
-      )}
-    </div>
-  );
-};
-
-export const Header = ({ title, description, technologies, links }) => {
-  return (
-    <div className="max-w-7xl mx-auto py-20 md:py-12 px-4 w-full">
-      <h1 className="text-2xl md:text-4xl font-bold dark:text-white text-left">
-        {title}
-      </h1>
-      <p className="w-full text-base md:text-xl mt-8 dark:text-neutral-200 text-left">
-        {description}
-      </p>
-      <ul className="list-disc pl-5 mt-4 text-base md:text-xl dark:text-neutral-200 text-left">
-        {technologies.map((tech, index) => (
-          <li key={index}>{tech}</li>
-        ))}
-      </ul>
-      <div className="flex flex-row space-x-4 mt-8">
-        {links.map((link, index) => (
-          <Link
-            to={link.link}
-            target="_blank"
-            key={index}
-            className="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group"
-          >
-            <span className="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
-            <span className="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
-            <span className="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
-            <span className="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
-            <span className="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
-            <span className="relative transition-colors duration-300 delay-200 group-hover:text-white ease">
+    <div className="py-12 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+      <header className="max-w-5xl mx-auto text-center">
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 text-transparent bg-clip-text">
+          {projectTitle}
+        </h1>
+        <p className="text-lg sm:text-xl mb-6 leading-relaxed bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 text-transparent bg-clip-text text-left">
+          {projectDescription}
+        </p>
+        <ul className="list-none flex flex-wrap justify-center space-x-4 mb-8">
+          {technologies.map((tech, index) => (
+            <li
+              key={index}
+              className="px-4 py-2 bg-gray-800 rounded-full text-sm font-medium hover:bg-gray-700"
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+        <div className="flex justify-center space-x-4">
+          {links.map((link, index) => (
+            <Link
+              to={link.link}
+              target="_blank"
+              key={index}
+              className="px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1"
+            >
               {link.title}
-            </span>
-          </Link>
+            </Link>
+          ))}
+        </div>
+      </header>
+
+      <main className="mt-12 grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {products.map((product, index) => (
+          <motion.div
+            key={index}
+            className="relative group"
+            // whileHover={{ scale: 1.05 }}
+            animate={{ y: [0, -10, 0] }} // Animation: Move up, then down
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            <img
+              src={product.thumbnail}
+              alt={product.title}
+              className="object-cover w-32 h-32 sm:w-36 sm:h-36 md:w-full md:h-40 rounded-lg shadow-lg"
+              onClick={() => handleImageClick(product)}
+            />
+          </motion.div>
         ))}
-      </div>
+      </main>
+
+      {isModalOpen && <Modal product={selectedProduct} closeModal={closeModal} />}
     </div>
   );
 };
-
-export const ProductCard = ({ product, translate, onImageClick }) => {
-  return (
-    <motion.div
-      style={{
-        x: translate,
-      }}
-      whileHover={{
-        y: -20,
-      }}
-      key={product.title}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0"
-    >
-      <button onClick={() => onImageClick(product)} className="w-full h-full">
-        <img
-          src={product.thumbnail}
-          alt={product.title}
-          className="object-contain object-center absolute h-full w-full inset-0"
-        />
-      </button>
-      <div className="absolute inset-0 h-full w-full pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 text-white">{product.title}</h2>
-    </motion.div>
-  );
-};
-
-export default HeroParallax;

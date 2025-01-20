@@ -339,6 +339,7 @@ const PortfolioLayout = () => {
               description:
                 "Developed a E-commerce website. That sells a variety of products, uses technology to make shopping convenient, allows Vendors to sell on the site.",
               type: "Office Project",
+              link: "/dpanda",
             },
             {
               name: " SEHGAL Foundation / Digital library",

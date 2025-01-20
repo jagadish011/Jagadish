@@ -11,14 +11,14 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "framer-motion": "^11.5.6",
+    "framer-motion": "^11.13.1",
     "link-preview": "^1.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.26.2",
-    "tailwind-merge": "^2.5.2"
+    "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

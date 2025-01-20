@@ -2,13 +2,17 @@ import React, { useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { HeroParallax } from "./ui/HeroParallax"; 
 import a1 from "../assets/alkaline/a1.png";
-import a2 from "../assets/alkaline/a2.png";
-import a3 from "../assets/alkaline/a3.png";
-import a4 from "../assets/alkaline/a4.png";
-import a5 from "../assets/alkaline/a5.png";
-import a6 from "../assets/alkaline/a6.png";
+import a2 from "../assets/alkaline/aw1.png";
+import a3 from "../assets/alkaline/aw2.png";
+import a4 from "../assets/alkaline/aw3.png";
+import a5 from "../assets/alkaline/aw4.png";
+import a6 from "../assets/alkaline/aw5.png";
 import a7 from "../assets/alkaline/a7.png";
 import a8 from "../assets/alkaline/a8.png";
+import a9 from "../assets/alkaline/aw6.png";
+import a10 from "../assets/alkaline/aw7.png";
+import a11 from "../assets/alkaline/aw8.png";
+
 
 const AlkalineWater = () => {
   useEffect(() => {
@@ -49,28 +53,16 @@ const AlkalineWater = () => {
       thumbnail: a8,
     },
     {
-      title: "Product 1",
-      thumbnail: a1,
+      title: "Product 9",
+      thumbnail: a9,
     },
     {
-      title: "Product 4",
-      thumbnail: a4,
+      title: "Product 10",
+      thumbnail: a10,
     },
     {
-      title: "Product 5",
-      thumbnail: a5,
-    },
-    {
-      title: "Product 4",
-      thumbnail: a4,
-    },
-    {
-      title: "Product 5",
-      thumbnail: a5,
-    },
-    {
-      title: "Product 6",
-      thumbnail: a6,
+      title: "Product 11",
+      thumbnail: a11,
     },
 
   ];
@@ -79,8 +71,8 @@ const AlkalineWater = () => {
     { title: "Learn More", link: "https://alkaline-admin.vercel.app/" },
   ];
   return (
-    <div className="container mx-auto py-8 font-spaceMono">
-      <h1 className="text-2xl font-bold mb-4">Freelance Project</h1>
+    <div className="font-spaceMono">
+      {/* <h1 className="text-2xl font-bold mb-4">Freelance Project</h1> */}
       {/* Adding the HeroParallax component here */}
       <HeroParallax
         products={products}
