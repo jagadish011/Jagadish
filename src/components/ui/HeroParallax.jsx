@@ -21,15 +21,16 @@ const Modal = ({ product, closeModal }) => {
         <img
           src={product.thumbnail}
           alt={product.title}
-          className="object-cover w-full h-64 rounded-lg"
+          className="object-contain w-full h-auto rounded-lg"
         />
-        {/* <h3 className="mt-4 text-2xl font-semibold text-gray-800">
+        {/* <h3 className="mt-4 text-2xl font-semibold text-gray-800 text-center">
           {product.title}
         </h3> */}
       </div>
     </div>
   );
 };
+
 
 export const HeroParallax = ({
   products,
@@ -96,7 +97,7 @@ export const HeroParallax = ({
             <img
               src={product.thumbnail}
               alt={product.title}
-              className="object-contain w-full h-auto rounded-lg shadow-lg"
+              className="object-cover w-32 h-32 sm:w-36 sm:h-36 md:w-full md:h-40 rounded-lg shadow-lg"
               onClick={() => handleImageClick(product)}
             />
           </motion.div>

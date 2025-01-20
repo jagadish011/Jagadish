@@ -35,7 +35,7 @@ const Kalasindu = () => {
   const links = [{ title: "Learn More", link: "https://kalasindhu.com/" }];
 
   return (
-    <div className="container   font-spaceMono">
+    <div className="font-spaceMono">
       {/* Adding the HeroParallax component here */}
       <HeroParallax
         products={products}
