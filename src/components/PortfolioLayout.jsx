@@ -7,6 +7,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { LuGithub } from "react-icons/lu";
 import { BsArrowUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { link } from "framer-motion/client";
 
 const PortfolioLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -352,6 +353,7 @@ const PortfolioLayout = () => {
               description:
                 "Platform offering a variety of services at home. Customers use our platform to book services.",
               type: "Office Project",
+              link: "/sahay",
             },
           ].map((project) => (
             <Link to={project.link || "#"} key={project.name} className="flex">

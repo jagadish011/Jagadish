@@ -4,6 +4,7 @@ import PortfolioLayout from './components/PortfolioLayout';
 import Kalasindu from './components/Kalasindu';
 import Edmentor from './components/Edmentor';
 import Dpanda from './components/Dpanda';
+import Sahay from './components/Sahay';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path='/kalasindu' element={<Kalasindu />} />
           <Route path='/edmentor' element={<Edmentor />} />
           <Route path='/dpanda' element={<Dpanda />} />
+          <Route path='/sahay' element={<Sahay />} />
         </Routes>
     </Router>
   );
